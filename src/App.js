@@ -9,7 +9,9 @@ function App() {
   useEffect(()=> {
     axios.get("https://pokeapi.co/api/v2/pokemon?limit=807")
       
-    .then(response => setPokemon(response.results))
+    .then(response => 
+      {console.log(response.data.results);
+      setPokemon(response.data.results)})
     .catch((err) => {
       console.log(err);
     })
@@ -20,7 +22,7 @@ function App() {
       <ul>
       {
           pokemon.map((pokemonList, index)=>{
-            return (<li key={index}>{pokemonList.results}</li>)
+            return (<li key={index}>{pokemonList.name}</li>)
           })
         }
       </ul>
